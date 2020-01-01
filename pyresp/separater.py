@@ -6,15 +6,18 @@ csvファイル読み取り部
 
 
 """
-import csv, re, functools, os
+import csv, functools, os
 from typing import List
-import sys_enum as SysEnum
+import pyresp_enum as SysEnum
 
 class StorySeparater(object):
   """共通パーサー"""
-  def __init__(self,story_file_path):
+  def __init__(self,story_file_path:str,out_dir = None):
     self.file_path = story_file_path
-    self.folde_path = "./out"
+    if out_dir:
+      self.folde_path = out_dir
+    else:
+      self.folde_path = "./out_story"
   
   def separate(self):
     for title,block in self.generate_each_value_table():
@@ -191,5 +194,5 @@ class StorySeparater(object):
 
 
 if __name__ == "__main__":
-  parser = StorySeparater("./MainAnalysis.story.csv")
+  parser = StorySeparater("./MainAnalysis.story.csv" )
   parser.separate()

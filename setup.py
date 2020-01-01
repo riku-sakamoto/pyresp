@@ -5,21 +5,21 @@
 from setuptools import setup, find_packages
 
 
-with open('README.rst') as f:
-    readme = f.read()
+with open('README.md') as f:
+  readme = f.read()
 
 with open('LICENSE') as f:
-    license = f.read()
+	license = f.read()
 
 setup(
-    name='ResperKit',
-    version='0.1.0',
-    description='Parser Engine for RESP',
-    long_description=readme,
-    author='Riku Sakamoto',
-    author_email='riku-sakamoto@kke.co.jp',
-    url='https://github.com/',
-    license=license,
-    packages=find_packages(exclude=('tests', 'docs'))
+	name='pyresp',
+	version='0.1.0',
+	description='Python Libraries for RESP output files',
+	long_description=readme,
+	author='Riku Sakamoto',
+	author_email='riku-sakamoto@kke.co.jp',
+	url='https://github.com/riku-sakamoto/pyresp',
+	license=license,
+	packages=find_packages(exclude=('tests', 'docs'))
 )
 

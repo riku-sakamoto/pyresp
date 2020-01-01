@@ -1,13 +1,8 @@
 # -*- coding: utf-8 -*-
 from . import helpers
+from .separater import StorySeparater
 
+def sepearate_story_csv(story_file_path,out_dir=None):
+  story_sep = StorySeparater(story_file_path,out_dir)
+  story_sep.separate()
 
-def get_hmm():
-    """Get a thought."""
-    return 'hmmm...'
-
-
-def hmm():
-    """Contemplation..."""
-    if helpers.get_answer():
-        print(get_hmm())
