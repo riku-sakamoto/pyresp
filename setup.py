@@ -20,6 +20,6 @@ setup(
 	author_email='riku-sakamoto@kke.co.jp',
 	url='https://github.com/riku-sakamoto/pyresp',
 	license=license,
-	packages=find_packages(exclude=('tests', 'docs'))
+	packages=find_packages(exclude=('tests', 'docs','RESPToolKitEnv'))
 )
 
