@@ -171,7 +171,7 @@ class StorySeparater(object):
   
   def get_case_number(self,first_row:List[str],analysis_type:SysEnum.ReadableAnalysisType):
     if analysis_type == SysEnum.ReadableAnalysisType.General:
-      case_number = first_row[0]
+      case_number = SysEnum.ReadableAnalysisType.General.name
     else:
       case_number = first_row[1]
     return case_number
