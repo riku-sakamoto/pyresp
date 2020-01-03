@@ -1,8 +1,15 @@
 # -*- coding: utf-8 -*-
 from . import helpers
-from .separater import StorySeparater
+from pyresp.separater import StorySeparater
+from pyresp.path_utils import remake_folder
 
-def sepearate_story_csv(story_file_path,out_dir=None):
-  story_sep = StorySeparater(story_file_path,out_dir)
-  story_sep.separate()
+def sepearate_story_csv(story_file_path,out_directory):
+  """
+  storyファイルを各テーブルに対応するcsvに分割する。
+  story_file_path : storyファイルのパス
+  out_directory : csvを出力するフォルダ
+  """
+  remake_folder(out_directory)
+  story_seperater = StorySeparater(story_file_path,out_directory)
+  story_seperater.separate()
 

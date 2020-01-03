@@ -2,10 +2,11 @@
 """
 csvファイル読み取り部
 
-解析ケースごとに分割
-
+1. 解析ケースごとに分割
+2. 表形式になるように成型する（固有値解析結果のみロジックが異なる）
 
 """
+
 import csv, functools, os
 from typing import List
 import pyresp.pyresp_enum as SysEnum
@@ -14,15 +15,14 @@ class StorySeparater(object):
   """共通パーサー"""
   def __init__(self,story_file_path:str,out_dir = None):
     self.file_path = story_file_path
-    if out_dir:
-      self.folde_path = out_dir
-    else:
-      self.folde_path = "./out_story"
+    self.file_name = os.path.basename(self.file_path)
+    self.folder_path = out_dir
   
   def separate(self):
+    """Storyファイルを分割する"""
     for title,block in self.generate_each_value_table():
       if self.is_active_block(block):
-        file_path = os.path.join(self.folde_path,"sample_%s.csv"%(title))
+        file_path = os.path.join(self.folder_path,"%s_%s.csv"%(self.file_name,title))
         with open( file_path,"w",newline="") as fw:
             writer = csv.writer(fw, delimiter=',')
             writer.writerows(block)
@@ -118,9 +118,9 @@ class StorySeparater(object):
       return table
   
   def get_table_title(self,table_first_row:List[str],case_number:str):
+    """各表のタイトルを設定する"""
     cell = table_first_row[0]
     value_title = ""
-    """各表のタイトルを取得する"""
     if cell == "Version":
       value_title =  "version"
     elif cell == "Date":
@@ -132,7 +132,7 @@ class StorySeparater(object):
     elif cell == "Story":
       value_title =  "story"
     elif cell == "*** Dynamic Non-Linear Analysis ***":
-      value_title =  "DNLA_title"
+      value_title =  "title"
     elif cell == "Abs.Max." and table_first_row[2] == "DriftU":
       value_title =  "drift_abs_max"
     elif cell == "Abs.MaxShearForceComponent.":
