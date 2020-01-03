@@ -10,12 +10,13 @@ csvファイル読み取り部
 import csv, functools, os
 from typing import List
 import pyresp.pyresp_enum as SysEnum
+import pyresp.path_utils as path_utils
 
 class StorySeparater(object):
   """共通パーサー"""
   def __init__(self,story_file_path:str,out_dir = None):
     self.file_path = story_file_path
-    self.file_name = os.path.basename(self.file_path)
+    self.file_name = path_utils.extract_file_name(story_file_path)
     self.folder_path = out_dir
   
   def separate(self):
