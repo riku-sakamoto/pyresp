@@ -12,7 +12,7 @@ with open('LICENSE') as f:
 setup(
 	name='pyresp',
 	version='0.1.0',
-	description='Python Libraries for RESP output files',
+	description='Python Libraries for RESP Output Files',
 	long_description=readme,
 	author='Riku Sakamoto',
 	author_email='riku-sakamoto@kke.co.jp',

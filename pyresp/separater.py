@@ -8,7 +8,7 @@ csvファイル読み取り部
 """
 import csv, functools, os
 from typing import List
-import pyresp_enum as SysEnum
+import pyresp.pyresp_enum as SysEnum
 
 class StorySeparater(object):
   """共通パーサー"""
